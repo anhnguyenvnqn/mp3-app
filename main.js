@@ -306,7 +306,8 @@ app.start();
 
 //WEATHER
 async function changeWeatherUI(capitalValueSeach) {
-  let apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${capitalValueSeach}&appid=39165f1d7638c2eedf70f49bec72efa1`;
+  try {
+    let apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${capitalValueSeach}&appid=39165f1d7638c2eedf70f49bec72efa1`;
   let data = await fetch(apiURL).then((res) => res.json());
   if (data.cod == 200) {
     city.innerText = data.name;
@@ -332,6 +333,10 @@ async function changeWeatherUI(capitalValueSeach) {
   } else {
     content.classList.add("hide");
   }
+  } catch (error) {
+    
+  }
+  
 }
 
 seach.addEventListener("keypress", function (e) {
@@ -343,9 +348,14 @@ seach.addEventListener("keypress", function (e) {
 });
 
 async function getCapitalAuto() {
-  // geo api
-  let cityUrl = `http://ip-api.com/json/?fields=61439`;
-  let dataCity = await fetch(cityUrl).then((res) => res.json());
-  changeWeatherUI(dataCity.city);
+  try {
+    // geo api
+    let cityUrl = `http://ip-api.com/json/?fields=61439`;
+    let dataCity = await fetch(cityUrl).then((res) => res.json());
+    changeWeatherUI(dataCity.city);
+    
+  } catch (error) {
+    
+  }
 }
 getCapitalAuto();
