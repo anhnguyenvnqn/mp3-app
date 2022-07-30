@@ -12,6 +12,8 @@
 body {
   height: 100vh;
   color: white;
+  background-image: linear-gradient(to top, #fbc2eb 20%, #a6c1ee 100%);
+
 }
 
 html {
@@ -23,6 +25,8 @@ html {
   position: relative;
   max-width: 480px;
   margin: 0 auto;
+  
+
 }
 
 .player .icon-pause {
@@ -376,7 +380,7 @@ header h2 {
 .weather {
   width: 100%;
   border-radius: 10px;
-  padding: 50px;
+  padding:10px;
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -404,7 +408,7 @@ header h2 {
 
 .seach {
   width: 300px;
-  height: 50px;
+  height: 30px;
   padding: 4px 12px;
   font-size: 18px;
   border: none;
@@ -419,28 +423,24 @@ header h2 {
 }
 .content {
   text-align: center;
-  width: 300px;
+  width: 200px;
 }
 .capital {
   text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
-  font-size: 32px;
+  font-size: 22px;
   margin: 6px 0;
 }
-.time {
-  font-size: 16px;
-  font-weight: 500;
-}
+
 .temperature {
   background: rgba(255, 255, 255, 0.4);
   box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
   text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
   width: 100px;
-  height: 50px;
-  font-size: 32px;
+  height: 30px;
+  font-size: 22px;
   font-weight: 700;
   border-radius: 20px;
   margin: 0 auto;
-  margin-bottom: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -448,23 +448,18 @@ header h2 {
 .temperature sup {
   position: relative;
   top: -12px;
-  font-size: 18px;
+  font-size: 12px;
 }
-.shot-decs {
-  font-size: 36px;
-  font-weight: 700;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
-  margin: 16px 0;
-}
+
 .more-decs {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  font-size: 14px;
+  font-size: 12px;
 }
 .more-decs i {
   display: block;
-  padding: 10px;
+  padding: 12px;
 }
 .hide {
   opacity: 0;

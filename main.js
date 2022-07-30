@@ -306,10 +306,10 @@ app.start();
 async function getCapitalAuto() {
   try {
     // geo api
-    let cityUrl = `http://ip-api.com/json/?fields=61439`;
+    let cityUrl = 'http://ip-api.com/json/?fields=61439';
     let dataCity = await fetch(cityUrl)
     .then((res) => res.json());
-    await changeWeatherUI(dataCity.city);
+    changeWeatherUI(dataCity.city);
   } catch (error) {
   }
 }
@@ -320,7 +320,6 @@ async function changeWeatherUI(capitalValueSeach) {
     let data = await fetch(apiURL).then((res) => res.json());
     if (data.cod == 200) {
       city.innerText = data.name;
-      country.innerText = data.sys.country;
       visibility.innerText = data.visibility + "m";
       wind.innerText = data.wind.speed + "m/s";
       sun.innerText = data.main.humidity + "%";
