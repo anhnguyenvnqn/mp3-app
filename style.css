@@ -1,0 +1,477 @@
+:root {
+  --primary-color: #ec1f55;
+  --text-color: #333;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  color: white;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.player {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.player .icon-pause {
+  display: none;
+}
+
+.player.playing .icon-pause {
+  display: inline-block;
+}
+
+.player.playing .icon-play {
+  display: none;
+}
+
+.dashboard {
+  padding: 16px 16px 14px;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 480px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+header .btn.btn-add {
+  color: var(--primary-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  font-size: 22px;
+}
+header h4 {
+  color: var(--primary-color);
+  font-size: 12px;
+}
+header h2 {
+  color: var(--text-color);
+  font-size: 20px;
+}
+
+/* CD */
+.cd-inner {
+  background: url(./asset/img/soundwave.png) no-repeat center/contain;
+}
+.cd-inner.active {
+  animation: soundBeats 1.2s infinite;
+}
+
+@keyframes soundBeats {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  45% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  70% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  75% {
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  95% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+.cd {
+  display: flex;
+  margin: auto;
+  width: 200px;
+}
+
+.cd-thumb {
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  background-size: cover;
+  margin: auto;
+}
+
+/* CONTROL */
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 18px 0 8px 0;
+}
+
+.control .btn {
+  color: #666;
+  padding: 18px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.control .btn:hover {
+  opacity: 0.5;
+}
+
+.control .btn.active {
+  color: var(--primary-color);
+}
+
+.control .btn-toggle-play {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+}
+
+.progress {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 6px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 8px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* PLAYLIST */
+.playlist {
+  margin-top: 408px;
+  padding: 12px;
+}
+
+.song {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  background-color: #fff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.song .spectrum div {
+  display: none;
+}
+.song.active {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.8;
+}
+.song.active .spectrum div {
+  display: block;
+}
+
+.song.active .option,
+.song.active .author,
+.song.active .title {
+  color: #fff;
+}
+
+.song .thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-size: cover;
+  margin: 0 8px;
+}
+
+.song .body {
+  flex: 1;
+  padding: 0 16px;
+}
+
+.song .title {
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.song .author {
+  font-size: 12px;
+  color: #999;
+}
+
+.song .option {
+  padding: 16px 8px;
+  color: #999;
+  font-size: 18px;
+}
+/* Spectrum */
+.spectrum {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 80px;
+}
+.spectrum div,
+.spectrum div:before,
+.spectrum div:after {
+  width: 9px;
+  height: 3px;
+  background: #57c7db;
+  position: relative;
+  transform: translate(-11px, 5px);
+  box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2, 0 -9px 0 #b8e3ea,
+    0 -12px 0 #caecf1;
+  animation-name: bar1;
+  animation-duration: 0.3s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+.spectrum div:before {
+  content: "";
+  position: absolute;
+  transform: translate(11px, 0);
+  box-shadow: 0 -3px 0 #57c7db;
+  animation-name: bar2;
+}
+
+.spectrum div:after {
+  content: "";
+  position: absolute;
+  transform: translate(22px, 0);
+  box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2, 0 -9px 0 #b8e3ea;
+  animation-name: bar3;
+}
+.spectrum.active div,
+.spectrum.active div:before,
+.spectrum.active div:after {
+  animation-play-state: running;
+}
+.spectrum.paused div,
+.spectrum.paused div:before,
+.spectrum.paused div:after {
+  animation: none;
+  box-shadow: 0 -3px 0 #57c7db;
+}
+@keyframes bar1 {
+  0%,
+  19.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2, 0 -9px 0 #b8e3ea,
+      0 -12px 0 #caecf1;
+  }
+
+  20%,
+  39.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2, 0 -9px 0 #b8e3ea;
+  }
+
+  40%,
+  59.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2;
+  }
+
+  60%,
+  79.9% {
+    box-shadow: 0 -3px 0 #57c7db;
+  }
+
+  80%,
+  100% {
+    box-shadow: none;
+  }
+}
+
+@keyframes bar2 {
+  0%,
+  19.9% {
+    box-shadow: none;
+  }
+
+  20%,
+  39.9% {
+    box-shadow: 0 -3px 0 #57c7db;
+  }
+
+  40%,
+  59.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2;
+  }
+
+  60%,
+  79.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2, 0 -9px 0 #b8e3ea,
+      0 -12px 0 #caecf1;
+  }
+
+  80%,
+  100% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2, 0 -9px 0 #b8e3ea;
+  }
+}
+
+@keyframes bar3 {
+  0%,
+  19.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2;
+  }
+
+  20%,
+  39.9% {
+    box-shadow: 0 -3px 0 #57c7db;
+  }
+
+  40%,
+  59.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2;
+  }
+
+  60%,
+  79.9% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2, 0 -9px 0 #b8e3ea;
+  }
+
+  80%,
+  100% {
+    box-shadow: 0 -3px 0 #57c7db, 0 -6px 0 #90d6e2, 0 -9px 0 #b8e3ea,
+      0 -12px 0 #caecf1;
+  }
+}
+
+/* WEATHER APP  */
+.weather {
+  width: 100%;
+  border-radius: 10px;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.address {
+  text-align: center;
+}
+.hot {
+  background-image: linear-gradient(to top, rgb(254 162 27) 20%, #a6c1ee 100%);
+}
+
+.warm {
+  background-image: linear-gradient(to top, #fbc2eb 20%, #a6c1ee 100%);
+}
+
+.cool {
+  background-image: linear-gradient(to top, #d7d3ca 0%, #545d58 100%);
+}
+
+.cold {
+  background-image: linear-gradient(to top, rgb(41 20 122) 0%, #a6c1ee 100%);
+}
+
+.seach {
+  width: 300px;
+  height: 50px;
+  padding: 4px 12px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 0 15px 0 15px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
+}
+.seach:focus {
+  border-radius: 15px 0 15px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+.content {
+  text-align: center;
+  width: 300px;
+}
+.capital {
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
+  font-size: 32px;
+  margin: 6px 0;
+}
+.time {
+  font-size: 16px;
+  font-weight: 500;
+}
+.temperature {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
+  width: 100px;
+  height: 50px;
+  font-size: 32px;
+  font-weight: 700;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.temperature sup {
+  position: relative;
+  top: -12px;
+  font-size: 18px;
+}
+.shot-decs {
+  font-size: 36px;
+  font-weight: 700;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
+  margin: 16px 0;
+}
+.more-decs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.more-decs i {
+  display: block;
+  padding: 10px;
+}
+.hide {
+  opacity: 0;
+}
+
+@media (max-width: 1100px) {
+  .weather {
+    display: none;
+  }
+}
