@@ -12,9 +12,8 @@
  */
 
 const PLAYER_STORAGE_KEY = "RANDOM_REPEAT";
-
 const $ = document.querySelector.bind(document);
-
+const $$ = document.querySelector.bind(document);
 const player = $(".player");
 const heading = $("header h2");
 const cdThumb = $(".cd-thumb");
@@ -171,7 +170,7 @@ const app = {
     //khi song dc play
     audio.onplay = function () {
       _this.isPlaying = true;
-      player.classList.add("playing");
+      player.classList.add("playing"); 
       cdInner.classList.add("active");
       $(".song.active .spectrum").classList.remove("paused");
       $(".song.active .spectrum").classList.add("active");
